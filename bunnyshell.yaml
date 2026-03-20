@@ -3,6 +3,11 @@ name: openclaw
 type: primary
 environmentVariables:
     OPENCLAW_TOKEN: 'your-token-here'
+security:
+    access:
+        allowedIps:
+            - '0.0.0.0/0'
+        realIpTrustedProxies: null
 components:
     -
         kind: Application
