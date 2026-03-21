@@ -8,5 +8,5 @@ stack:
     - name: Node.js
       version: '24'
     - name: OpenClaw
-      version: 'latest'
+      version: '2026.3'
 discoverable: true
