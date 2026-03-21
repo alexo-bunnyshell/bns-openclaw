@@ -1,0 +1,41 @@
+kind: Environment
+name: openclaw
+type: primary
+environmentVariables:
+    OPENCLAW_TOKEN: 'your-token-here'
+security:
+    access:
+        allowedIps:
+            - '0.0.0.0/0'
+        realIpTrustedProxies: null
+components:
+    -
+        kind: Application
+        name: gateway
+        gitRepo: 'https://github.com/alexo-bunnyshell/bns-openclaw.git'
+        gitBranch: main
+        gitApplicationPath: /
+        dockerCompose:
+            build:
+                context: .
+                dockerfile: .docker/Dockerfile
+                target: dev
+            environment:
+                OPENCLAW_TOKEN: '{{ env.vars.OPENCLAW_TOKEN }}'
+            ports:
+                - '18789:18789'
+        hosts:
+            -
+                hostname: 'gateway-{{ env.base_domain }}'
+                path: /
+                servicePort: 18789
+        volumes:
+            -
+                name: openclaw-data
+                mount: /root/.openclaw
+                subPath: ''
+volumes:
+    -
+        name: openclaw-data
+        size: 5Gi
+        type: disk

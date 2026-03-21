@@ -1,0 +1,12 @@
+name: OpenClaw AI Assistant
+description: A cloud deployment of OpenClaw, a personal AI assistant with a web gateway UI. Connects to chat apps like WhatsApp, Telegram, Discord and Slack.
+tags: [ ai, openclaw, assistant, gateway, nodejs ]
+icons: [ nodejs ]
+categories: [ ai/ml ]
+stack:
+  packages:
+    - name: Node.js
+      version: '24'
+    - name: OpenClaw
+      version: 'latest'
+discoverable: true
